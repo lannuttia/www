@@ -25,7 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: Azure/aci-deploy@v1.1
+      - name: Azure Login
+        uses: Azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure Deploy
+        uses: Azure/aci-deploy@v1.1
         with:
           resource-group: Personal
           name: $web
