@@ -33,5 +33,6 @@ jobs:
       - name: Azure Deploy
         uses: Azure/aci-deploy@v1.1
         with:
-          resource-group: Personal
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
           name: $web
